@@ -1,7 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: bclarke
- * Date: 1/25/16
- * Time: 7:17 PM
- */
+define("HOSTNAME", "localhost");
+define("DATABASE", "fm_bwapps");
+define("USERNAME", "billing");
+define("PASSWORD", "D#7Nx74GwzaTYE9#");
+?>

@@ -12,28 +12,55 @@
     <script src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
 
 
+    <?php
+    include_once "db.php";
+    $con=mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DATABASE);
+    // Check connection
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+    $username = $_SESSION['username'];
+//    **  TODO Change to dynamic username
+    $username = "bclarke";
+    $devID = $isManager = $isAdmin = "";
+    $sql = "SELECT *  FROM tblUsers
+INNER JOIN tblCompanies
+ON tblUsers.tblUsersCompanyID=tblCompanies.idtblCompanies
+where tblUsers.tblUsersUsername ='$username'";
+    $result = mysqli_query($con,$sql);
+
+    while($row = mysqli_fetch_array($result)) {
+
+        $firstName = $row['tblUsersFirstName'];
+        $isAdmin = $row['tblUsersIsAdmin'];
+        $company = $row['tblCompaniesName'];
+    }
+
+    ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-4"></div>
-            <div class="col-sm-4">
-                <a href="index.php"><i class="fa fa-home fa-5x"></i> </a>Force Mechanical
+            <div align="center" class="col-sm-4">
+                <a href="index.php"><i class="fa fa-home fa-5x"></i></a>
             </div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-2"></div>
+            <div align="right" class="col-sm-4">Welcome <?php echo $firstName;?></div>
         </div>
         <div class="row">
             <div class="col-sm-1">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                        <i class="fa fa-bars fa-2x"></i>
+                        <i class="fa fa-list-ul fa-2x"></i>
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li><a href="#newBtn" id="newBtn">New <i class="fa fa-plus"></i></a></li>
-                        <li><a href="#users" id="usersBtn">Users</a></li>
+                        <li class="dropdown-header"><?php echo $company; ?></li >
+                        <li><a href="#newBtn" id="newBtn">New <i class="fa fa-plus-square"></i></a></li>
+                        <li><a href="#logout" id="logoutBtn">Logout <i class="fa  fa-sign-out"></i></a></li>
                         <?php
+                        $isAdmin = true;
                         if ($isAdmin) {
-                            echo '<li ><a href = "#ratesBtn" id = "ratesBtn" > Edit Rates </a ></li >';
-                            echo '<li ><a href = "#contractsBtn" id = "contractsBtn" > Edit Contracts </a ></li >';
+                            echo '<li class="divider"></li >';
+                            echo '<li class="dropdown-header">Admin Functions</li >';
+                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Admin Page <i class="fa fa-cog"></i> </a ></li >';
                         }
                         ?>
                     </ul>
@@ -48,4 +75,4 @@
 
 
 </head>
-<?php
+
