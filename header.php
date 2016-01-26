@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Force Mechanical</title>
+    <title>HVAC Tracker</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -21,7 +21,7 @@
     }
     $username = $_SESSION['username'];
 //    **  TODO Change to dynamic username
-    $username = "bclarke";
+    $username = "kward";
     $devID = $isManager = $isAdmin = "";
     $sql = "SELECT *  FROM tblUsers
 INNER JOIN tblCompanies
@@ -57,7 +57,6 @@ where tblUsers.tblUsersUsername ='$username'";
                         <li><a href="#newBtn" id="newBtn">Reports <i class="fa fa-bar-chart"></i></a></li>
                         <li><a href="#logout" id="logoutBtn">Logout <i class="fa  fa-sign-out"></i></a></li>
                         <?php
-//                        $isAdmin = true;
                         if ($isAdmin) {
                             echo '<li class="divider"></li >';
                             echo '<li class="dropdown-header">Admin Functions</li >';

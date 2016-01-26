@@ -1,4 +1,8 @@
-<?php
+<!---->
+<!--<div class="row">-->
+<!--    <div class="col-sm-2"></div>-->
+<!--    <div class="col-sm-8">-->
+    <?php
 include_once "./header.php";
 $sql = "SELECT * FROM fm_bwapps.tblCustomers;";
 $result = mysqli_query($con, $sql);
@@ -14,7 +18,9 @@ $table .= "</tbody></table>";
 echo "<br>" . $table;
 
 ?>
-
+<!--    </div>-->
+<!--    <div class="col-sm-2"></div>-->
+<!--</div>-->
 <script>
     $(function(){
         $('#table').DataTable( {
