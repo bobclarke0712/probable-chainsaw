@@ -14,22 +14,22 @@
 
     <?php
     include_once "db.php";
-    $con=mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DATABASE);
+    $con = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DATABASE);
     // Check connection
     if (mysqli_connect_errno()) {
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
     $username = $_SESSION['username'];
-//    **  TODO Change to dynamic username
-    $username = "kward";
+    //    **  TODO Change to dynamic username
+    $username = "bclarke";
     $devID = $isManager = $isAdmin = "";
     $sql = "SELECT *  FROM tblUsers
 INNER JOIN tblCompanies
 ON tblUsers.tblUsersCompanyID=tblCompanies.idtblCompanies
 where tblUsers.tblUsersUsername ='$username'";
-    $result = mysqli_query($con,$sql);
+    $result = mysqli_query($con, $sql);
 
-    while($row = mysqli_fetch_array($result)) {
+    while ($row = mysqli_fetch_array($result)) {
 
         $firstName = $row['tblUsersFirstName'];
         $isAdmin = $row['tblUsersIsAdmin'];
@@ -39,45 +39,40 @@ where tblUsers.tblUsersUsername ='$username'";
     ?>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-4"></div>
-            <div align="center" class="col-sm-4">
-                <a href="index.php"><i class="fa fa-home fa-5x"></i></a>
-            </div>
-            <div align="right" class="col-sm-4">Welcome <b><?php echo $firstName;?></div></b>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">
+            <div class="col-sm-4">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                         <i class="fa fa-list-ul fa-2x"></i>
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-header"><?php echo $company; ?></li >
+                        <li class="dropdown-header"><?php echo $company; ?></li>
                         <li><a href="#newBtn" id="newBtn">New <i class="fa fa-plus-square"></i></a></li>
-                        <li><a href="#newBtn" id="newBtn">Reports <i class="fa fa-bar-chart"></i></a></li>
+                        <li><a href="index.php" id="newBtn">Customers <i class="fa fa-users"></i></a></li>
+                        <li><a href="reports.php" id="newBtn">Reports <i class="fa fa-bar-chart"></i></a></li>
                         <li><a href="#logout" id="logoutBtn">Logout <i class="fa  fa-sign-out"></i></a></li>
                         <?php
                         if ($isAdmin) {
                             echo '<li class="divider"></li >';
                             echo '<li class="dropdown-header">Admin Functions</li >';
-                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Unit Types <i class="fa fa-university"></i> </a ></li >';
-                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Unit Attributes <i class="fa fa-leaf"></i> </a ></li >';
-                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Link Attributes to Unit Types <i class="fa fa-link"></i> </a ></li >';
-                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Parts <i class="fa fa-cogs"></i> </a ></li >';
-                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Parts Attributes <i class="fa fa-leaf"></i> </a ></li >';
-                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Link Attributes to Parts <i class="fa fa-link"></i> </a ></li >';
+                            echo '<li ><a href = "unitTypes.php" id = "adminBtn" > Unit Types <i class="fa fa-university"></i> </a ></li >';
+                            echo '<li ><a href = "unitAttributes.php" id = "adminBtn" > Unit Attributes <i class="fa fa-leaf"></i> </a ></li >';
+                            echo '<li ><a href = "unitTypeAttributeLink.php" id = "adminBtn" > Link Attributes to Unit Types <i class="fa fa-link"></i> </a ></li >';
+                            echo '<li ><a href = "parts.php" id = "adminBtn" > Parts <i class="fa fa-cogs"></i> </a ></li >';
+                            echo '<li ><a href = "partsAttributes.php" id = "adminBtn" > Parts Attributes <i class="fa fa-leaf"></i> </a ></li >';
+                            echo '<li ><a href = "partsAttributeLink.php" id = "adminBtn" > Link Attributes to Parts <i class="fa fa-link"></i> </a ></li >';
                         }
                         ?>
                     </ul>
                 </div>
             </div>
-        </div
-            <div class="col-sm-12>">
+            <div align="center" class="col-sm-4"></div>
+            <!--                <a href="index.php"><i class="fa fa-home fa-5x"></i></a>-->
 
-            </div>
-        </div>
-    </div>
+            <div align="right" class="col-sm-4">Welcome <b><?php echo $firstName; ?></div>
 
 
-</head>
+
+
+
+        </head>
 
