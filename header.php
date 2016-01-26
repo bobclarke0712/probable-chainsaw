@@ -43,7 +43,7 @@ where tblUsers.tblUsersUsername ='$username'";
             <div align="center" class="col-sm-4">
                 <a href="index.php"><i class="fa fa-home fa-5x"></i></a>
             </div>
-            <div align="right" class="col-sm-4">Welcome <?php echo $firstName;?></div>
+            <div align="right" class="col-sm-4">Welcome <b><?php echo $firstName;?></div></b>
         </div>
         <div class="row">
             <div class="col-sm-1">
@@ -54,13 +54,19 @@ where tblUsers.tblUsersUsername ='$username'";
                     <ul class="dropdown-menu">
                         <li class="dropdown-header"><?php echo $company; ?></li >
                         <li><a href="#newBtn" id="newBtn">New <i class="fa fa-plus-square"></i></a></li>
+                        <li><a href="#newBtn" id="newBtn">Reports <i class="fa fa-bar-chart"></i></a></li>
                         <li><a href="#logout" id="logoutBtn">Logout <i class="fa  fa-sign-out"></i></a></li>
                         <?php
-                        $isAdmin = true;
+//                        $isAdmin = true;
                         if ($isAdmin) {
                             echo '<li class="divider"></li >';
                             echo '<li class="dropdown-header">Admin Functions</li >';
-                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Admin Page <i class="fa fa-cog"></i> </a ></li >';
+                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Unit Types <i class="fa fa-university"></i> </a ></li >';
+                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Unit Attributes <i class="fa fa-leaf"></i> </a ></li >';
+                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Link Attributes to Unit Types <i class="fa fa-link"></i> </a ></li >';
+                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Parts <i class="fa fa-cogs"></i> </a ></li >';
+                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Parts Attributes <i class="fa fa-leaf"></i> </a ></li >';
+                            echo '<li ><a href = "#adminBtn" id = "adminBtn" > Link Attributes to Parts <i class="fa fa-link"></i> </a ></li >';
                         }
                         ?>
                     </ul>
