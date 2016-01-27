@@ -38,9 +38,9 @@ where tblUsers.tblUsersUsername ='$username'";
 
     ?>
     <div class="container-fluid">
-        <div class="row">
+        <div class="row"><div class="text-center">
             <div class="col-sm-4">
-                <div class="dropdown">
+                <div align="left" class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                         <i class="fa fa-list-ul fa-2x"></i>
                         <span class="caret"></span></button>
@@ -65,14 +65,17 @@ where tblUsers.tblUsersUsername ='$username'";
                     </ul>
                 </div>
             </div>
-            <div align="center" class="col-sm-4"></div>
-            <!--                <a href="index.php"><i class="fa fa-home fa-5x"></i></a>-->
+            <div align="center" class="col-sm-4"><a href="index.php"><i class="fa fa-home fa-3x"> HVAC Tracker</i></a></div>
+
 
             <div align="right" class="col-sm-4">Welcome <b><?php echo $firstName; ?></div>
-
+                </div>
+            </div>
+           <br><br>
 
 
 
 
         </head>
 
+</div>

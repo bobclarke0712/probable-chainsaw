@@ -10,7 +10,7 @@ while ($row = mysqli_fetch_array($result)) {
     $custName = $row['tblCustName'];
     $phoneNum = $row['tblCustPhone'];
     $email = $row['tblCustEmail'];
-    $table .= "<tr><td><a href='customerDetail.php?id=$custID'>$custName</a></td><td>$phoneNum</td></tr>";
+    $table .= "<tr><td><a href='customerDetail.php?id=$custID&name=$custName'>$custName</a></td><td>$phoneNum</td></tr>";
 }
 $table .= "</tbody></table></div>";
 echo "<br>" . $table;
