@@ -13,7 +13,7 @@ while ($row = mysqli_fetch_array($result)) {
     $condenserManufacturer = $row['tblCondenserManufacturer'];
     $condenserModel = $row['tblCondenserModel'];
     $condenserSerial = $row['tblCondenserSerialNumber'];
-    $CondensersTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$condenserName</a></td><td>$condenserManufacturer</td><td>$condenserModel</td><td>$condenserSerial</td></tr>";
+    $CondensersTable .= "<tr><td><a href='CondenserUnitDetail.php?id=$condenserID&custID=$id&custName=$custName'>$condenserName</a></td><td>$condenserManufacturer</td><td>$condenserModel</td><td>$condenserSerial</td></tr>";
 }
 $CondensersTable .= "</tbody></table></div>";
 
@@ -27,7 +27,7 @@ while ($row = mysqli_fetch_array($result)) {
     $HeatPumpManufacturer = $row['tblHeatPumpManufacturer'];
     $HeatPumpModel = $row['tblHeatPumpModel'];
     $HeatPumpSerial = $row['tblHeatPumpSerialNumber'];
-    $HeatPumpTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$HeatPumpName</a></td><td>$HeatPumpManufacturer</td><td>$HeatPumpModel</td><td>$HeatPumpSerial</td></tr>";
+    $HeatPumpTable .= "<tr><td><a href='HeatPumpUnitDetail.php?id=$HeatPumpID'>$HeatPumpName</a></td><td>$HeatPumpManufacturer</td><td>$HeatPumpModel</td><td>$HeatPumpSerial</td></tr>";
 }
 $HeatPumpTable .= "</tbody></table></div>";
 
@@ -41,7 +41,7 @@ while ($row = mysqli_fetch_array($result)) {
     $GasFurnaceManufacturer = $row['tblGasFurnaceManufacturer'];
     $GasFurnaceModel = $row['tblGasFurnaceModel'];
     $GasFurnaceSerial = $row['tblGasFurnaceSerialNumber'];
-    $GasFurnaceTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$GasFurnaceName</a></td><td>$GasFurnaceManufacturer</td><td>$GasFurnaceModel</td><td>$GasFurnaceSerial</td></tr>";
+    $GasFurnaceTable .= "<tr><td><a href='GasFurnaceUnitDetail.php?id=$GasFurnaceID'>$GasFurnaceName</a></td><td>$GasFurnaceManufacturer</td><td>$GasFurnaceModel</td><td>$GasFurnaceSerial</td></tr>";
 }
 $GasFurnaceTable .= "</tbody></table></div>";
 
@@ -55,7 +55,7 @@ while ($row = mysqli_fetch_array($result)) {
     $AirHandlerManufacturer = $row['tblAirHandlerManufacturer'];
     $AirHandlerModel = $row['tblAirHandlerModel'];
     $AirHandlerSerial = $row['tblAirHandlerSerialNumber'];
-    $AirHandlerTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$AirHandlerName</a></td><td>$AirHandlerManufacturer</td><td>$AirHandlerModel</td><td>$AirHandlerSerial</td></tr>";
+    $AirHandlerTable .= "<tr><td><a href='AirHandlerUnitDetail.php?id=$AirHandlerID'>$AirHandlerName</a></td><td>$AirHandlerManufacturer</td><td>$AirHandlerModel</td><td>$AirHandlerSerial</td></tr>";
 }
 $AirHandlerTable .= "</tbody></table></div>";
 
@@ -69,7 +69,7 @@ while ($row = mysqli_fetch_array($result)) {
     $RooftopManufacturer = $row['tblRooftopManufacturer'];
     $RooftopModel = $row['tblRooftopModel'];
     $RooftopSerial = $row['tblRooftopSerialNumber'];
-    $RooftopTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$RooftopName</a></td><td>$RooftopManufacturer</td><td>$RooftopModel</td><td>$RooftopSerial</td></tr>";
+    $RooftopTable .= "<tr><td><a href='RooftopUnitDetail.php?id=$RooftopID'>$RooftopName</a></td><td>$RooftopManufacturer</td><td>$RooftopModel</td><td>$RooftopSerial</td></tr>";
 }
 $RooftopTable .= "</tbody></table></div>";
 
@@ -82,7 +82,7 @@ while ($row = mysqli_fetch_array($result)) {
     $EvapUnitManufacturer = $row['tblEvapUnitManufacturer'];
     $EvapUnitModel = $row['tblEvapUnitModel'];
     $EvapUnitSerial = $row['tblEvapUnitSerialNumber'];
-    $EvapUnitTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$EvapUnitName</a></td><td>$EvapUnitManufacturer</td><td>$EvapUnitModel</td><td>$EvapUnitSerial</td></tr>";
+    $EvapUnitTable .= "<tr><td><a href='EvapUnitUnitDetail.php?id=$EvapUnitID'>$EvapUnitName</a></td><td>$EvapUnitManufacturer</td><td>$EvapUnitModel</td><td>$EvapUnitSerial</td></tr>";
 }
 $EvapUnitTable .= "</tbody></table></div>";
 
@@ -93,9 +93,10 @@ $EvapUnitTable .= "</tbody></table></div>";
         <div class="row">
             <div class="text-center">
                 <div class="col-sm-12">
-                    <div class="fa fa-bank"> <?php echo $custName ?> </div>
+                    <div class="fa fa-bank fa-2x"> <?php echo $custName ?> </div>
                 </div>
             </div>
+            <div class="row"><div class="col-sm-12">&nbsp;</div> </div>
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#Condensers">Condensers</a></li>
                 <li><a data-toggle="tab" href="#HeatPumps">Heat Pumps</a></li>

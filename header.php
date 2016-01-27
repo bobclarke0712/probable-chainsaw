@@ -56,10 +56,7 @@ where tblUsers.tblUsersUsername ='$username'";
                             echo '<li class="dropdown-header">Admin Functions</li >';
                             echo '<li ><a href = "companies.php" id = "adminBtn" ><i class="fa fa-university fa-2x"> Companies</i> </a ></li >';
                             echo '<li ><a href = "customers.php" id = "adminBtn" ><i class="fa fa-leaf fa-2x"> Customers</i> </a ></li >';
-                            echo '<li ><a href = "unitTypeAttributeLink.php" id = "adminBtn" > Link Attributes to Unit Types <i class="fa fa-link fa-2x"></i> </a ></li >';
-                            echo '<li ><a href = "parts.php" id = "adminBtn" > Parts <i class="fa fa-cogs fa-2x"></i> </a ></li >';
-                            echo '<li ><a href = "partsAttributes.php" id = "adminBtn" > Parts Attributes <i class="fa fa-leaf fa-2x"></i> </a ></li >';
-                            echo '<li ><a href = "partsAttributeLink.php" id = "adminBtn" > Link Attributes to Parts <i class="fa fa-link fa-2x"></i> </a ></li >';
+
                         }
                         ?>
                     </ul>
