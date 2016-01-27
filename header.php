@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,29 +38,28 @@ where tblUsers.tblUsersUsername ='$username'";
     }
 
     ?>
-    <div class="container-fluid">
         <div class="row"><div class="text-center">
             <div class="col-sm-4">
-                <div align="left" class="dropdown">
+                <div align="left" class="dropdown">&nbsp
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                         <i class="fa fa-list-ul fa-2x"></i>
                         <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                         <li class="dropdown-header"><?php echo $company; ?></li>
-                        <li><a href="#newBtn" id="newBtn">New <i class="fa fa-plus-square"></i></a></li>
-                        <li><a href="index.php" id="newBtn">Customers <i class="fa fa-users"></i></a></li>
-                        <li><a href="reports.php" id="newBtn">Reports <i class="fa fa-bar-chart"></i></a></li>
-                        <li><a href="#logout" id="logoutBtn">Logout <i class="fa  fa-sign-out"></i></a></li>
+                        <li><a href="#newBtn" id="newBtn"> <i class="fa fa-plus fa-2x"> New</i></a></li>
+                        <li><a href="index.php" id="newBtn"> <i class="fa fa-users fa-2x"> Customers</i></a></li>
+                        <li><a href="reports.php" id="newBtn"> <i class="fa fa-bar-chart fa-2x"> Reports</i></a></li>
+                        <li><a href="#logout" id="logoutBtn"> <i class="fa  fa-sign-out fa-2x"> Logout</i></a></li>
                         <?php
                         if ($isAdmin) {
                             echo '<li class="divider"></li >';
                             echo '<li class="dropdown-header">Admin Functions</li >';
-                            echo '<li ><a href = "unitTypes.php" id = "adminBtn" > Unit Types <i class="fa fa-university"></i> </a ></li >';
-                            echo '<li ><a href = "unitAttributes.php" id = "adminBtn" > Unit Attributes <i class="fa fa-leaf"></i> </a ></li >';
-                            echo '<li ><a href = "unitTypeAttributeLink.php" id = "adminBtn" > Link Attributes to Unit Types <i class="fa fa-link"></i> </a ></li >';
-                            echo '<li ><a href = "parts.php" id = "adminBtn" > Parts <i class="fa fa-cogs"></i> </a ></li >';
-                            echo '<li ><a href = "partsAttributes.php" id = "adminBtn" > Parts Attributes <i class="fa fa-leaf"></i> </a ></li >';
-                            echo '<li ><a href = "partsAttributeLink.php" id = "adminBtn" > Link Attributes to Parts <i class="fa fa-link"></i> </a ></li >';
+                            echo '<li ><a href = "companies.php" id = "adminBtn" ><i class="fa fa-university fa-2x"> Companies</i> </a ></li >';
+                            echo '<li ><a href = "customers.php" id = "adminBtn" ><i class="fa fa-leaf fa-2x"> Customers</i> </a ></li >';
+                            echo '<li ><a href = "unitTypeAttributeLink.php" id = "adminBtn" > Link Attributes to Unit Types <i class="fa fa-link fa-2x"></i> </a ></li >';
+                            echo '<li ><a href = "parts.php" id = "adminBtn" > Parts <i class="fa fa-cogs fa-2x"></i> </a ></li >';
+                            echo '<li ><a href = "partsAttributes.php" id = "adminBtn" > Parts Attributes <i class="fa fa-leaf fa-2x"></i> </a ></li >';
+                            echo '<li ><a href = "partsAttributeLink.php" id = "adminBtn" > Link Attributes to Parts <i class="fa fa-link fa-2x"></i> </a ></li >';
                         }
                         ?>
                     </ul>
@@ -68,7 +68,7 @@ where tblUsers.tblUsersUsername ='$username'";
             <div align="center" class="col-sm-4"><a href="index.php"><i class="fa fa-home fa-3x"> HVAC Tracker</i></a></div>
 
 
-            <div align="right" class="col-sm-4">Welcome <b><?php echo $firstName; ?></div>
+            <div align="right" class="col-sm-4">Welcome <b><?php echo $firstName . "&nbsp"; ?></div>
                 </div>
             </div>
            <br><br>
@@ -78,4 +78,3 @@ where tblUsers.tblUsersUsername ='$username'";
 
         </head>
 
-</div>

@@ -2,60 +2,133 @@
 include_once "header.php";
 $id = $_GET['id'];
 $custName = $_GET['name'];
-echo '<body>
-<div class="row">
-    <div class="text-center">
-        <div class="col-sm-12"><div class="fa fa-bank">
-            ' . ' ' . $custName . '</div>
-</div>
-</div>
-</div>';
-
-$sql = "select 'Condenser' as type
-  ,idtblCondenser
-  ,tblCondenserName
-  ,tblCondenserCustID
-  ,tblCondenserManufacturer
-  ,tblCondenserTonnage
-  ,tblCondenserMfgYear
-  ,tblCondenserRefrigerant
-  ,tblCondenserModel
-  ,tblCondenserSerialNumber
-  ,tblCondenserProduct
-  ,tblCondenserVoltage
-  ,tblCondenserLineSet
-  ,tblCondenserLocation
-  ,tblCondenserPressureSwitch
-  ,tblCondenserCapacitor
-  ,tblCondenserContactor
- from fm_bwapps.tblCondenser where tblCondenserCustID = '$id';";
 
 
-
-$result = mysqli_query($con, $sql);
-
-
-
-$table = "<div class='table-responsive'><table id= \"table\" class=\"table table-striped\" border='1'><thead><tr><th>Name</th><th>Type</th><th>Manufacturer</th></tr></thead><tbody>";
+$sqlCondenser = "select idtblCondenser ,tblCondenserName ,tblCondenserModel ,tblCondenserManufacturer, tblCondenserSerialNumber from fm_bwapps.tblCondenser where tblCondenserCustID = '$id';";
+$result = mysqli_query($con, $sqlCondenser);
+$CondensersTable = "<div class='table-responsive'><table id= \"table\" class=\"table table-striped\" border='1'><thead><tr><th>Name</th><th>Mfg</th><th>Model</th><th>Serial Number</th></tr></thead><tbody>";
 while ($row = mysqli_fetch_array($result)) {
     $condenserID = $row['idtblCondenser'];
     $condenserName = $row['tblCondenserName'];
     $condenserManufacturer = $row['tblCondenserManufacturer'];
-    $type = $row['type'];
-    $table .= "<tr><td><a href='unitDetail.php?id=$custID'>$condenserName</a></td><td>$type</td><td>$condenserManufacturer</td></tr>";
-
+    $condenserModel = $row['tblCondenserModel'];
+    $condenserSerial = $row['tblCondenserSerialNumber'];
+    $CondensersTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$condenserName</a></td><td>$condenserManufacturer</td><td>$condenserModel</td><td>$condenserSerial</td></tr>";
 }
-$table .= "</tbody></table></div>";
-echo $table;
+$CondensersTable .= "</tbody></table></div>";
+
+
+$sqlHeatPump = "SELECT * FROM fm_bwapps.tblHeatPump where tblHeatPumpCustID = '$id';";
+$result = mysqli_query($con, $sqlHeatPump);
+$HeatPumpTable = "<div class='table-responsive'><table id= \"table\" class=\"table table-striped\" border='1'><thead><tr><th>Name</th><th>Mfg</th><th>Model</th><th>Serial Number</th></tr></thead><tbody>";
+while ($row = mysqli_fetch_array($result)) {
+    $HeatPumpID = $row['idtblHeatPump'];
+    $HeatPumpName = $row['tblHeatPumpName'];
+    $HeatPumpManufacturer = $row['tblHeatPumpManufacturer'];
+    $HeatPumpModel = $row['tblHeatPumpModel'];
+    $HeatPumpSerial = $row['tblHeatPumpSerialNumber'];
+    $HeatPumpTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$HeatPumpName</a></td><td>$HeatPumpManufacturer</td><td>$HeatPumpModel</td><td>$HeatPumpSerial</td></tr>";
+}
+$HeatPumpTable .= "</tbody></table></div>";
+
+
+$sqlGasFurnace = "SELECT * FROM fm_bwapps.tblGasFurnace where tblGasFurnaceCustID = '$id';";
+$result = mysqli_query($con, $sqlGasFurnace);
+$GasFurnaceTable = "<div class='table-responsive'><table id= \"table\" class=\"table table-striped\" border='1'><thead><tr><th>Name</th><th>Mfg</th><th>Model</th><th>Serial Number</th></tr></thead><tbody>";
+while ($row = mysqli_fetch_array($result)) {
+    $GasFurnaceID = $row['idtblGasFurnace'];
+    $GasFurnaceName = $row['tblGasFurnaceName'];
+    $GasFurnaceManufacturer = $row['tblGasFurnaceManufacturer'];
+    $GasFurnaceModel = $row['tblGasFurnaceModel'];
+    $GasFurnaceSerial = $row['tblGasFurnaceSerialNumber'];
+    $GasFurnaceTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$GasFurnaceName</a></td><td>$GasFurnaceManufacturer</td><td>$GasFurnaceModel</td><td>$GasFurnaceSerial</td></tr>";
+}
+$GasFurnaceTable .= "</tbody></table></div>";
+
+
+$sqlAirHandler = "SELECT * FROM fm_bwapps.tblAirHandler where tblAirHandlerCustID = '$id';";
+$result = mysqli_query($con, $sqlAirHandler);
+$AirHandlerTable = "<div class='table-responsive'><table id= \"table\" class=\"table table-striped\" border='1'><thead><tr><th>Name</th><th>Mfg</th><th>Model</th><th>Serial Number</th></tr></thead><tbody>";
+while ($row = mysqli_fetch_array($result)) {
+    $AirHandlerID = $row['idtblAirHandler'];
+    $AirHandlerName = $row['tblAirHandlerName'];
+    $AirHandlerManufacturer = $row['tblAirHandlerManufacturer'];
+    $AirHandlerModel = $row['tblAirHandlerModel'];
+    $AirHandlerSerial = $row['tblAirHandlerSerialNumber'];
+    $AirHandlerTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$AirHandlerName</a></td><td>$AirHandlerManufacturer</td><td>$AirHandlerModel</td><td>$AirHandlerSerial</td></tr>";
+}
+$AirHandlerTable .= "</tbody></table></div>";
+
+
+$sqlRooftop = "SELECT * FROM fm_bwapps.tblRooftop where tblRooftopCustID = '$id';";
+$result = mysqli_query($con, $sqlRooftop);
+$RooftopTable = "<div class='table-responsive'><table id= \"table\" class=\"table table-striped\" border='1'><thead><tr><th>Name</th><th>Mfg</th><th>Model</th><th>Serial Number</th></tr></thead><tbody>";
+while ($row = mysqli_fetch_array($result)) {
+    $RooftopID = $row['idtblRooftop'];
+    $RooftopName = $row['tblRooftopName'];
+    $RooftopManufacturer = $row['tblRooftopManufacturer'];
+    $RooftopModel = $row['tblRooftopModel'];
+    $RooftopSerial = $row['tblRooftopSerialNumber'];
+    $RooftopTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$RooftopName</a></td><td>$RooftopManufacturer</td><td>$RooftopModel</td><td>$RooftopSerial</td></tr>";
+}
+$RooftopTable .= "</tbody></table></div>";
+
+$sqlEvapUnit = "SELECT * FROM fm_bwapps.tblEvapUnit where tblEvapUnitCustID = '$id';";
+$result = mysqli_query($con, $sqlEvapUnit);
+$EvapUnitTable = "<div class='table-responsive'><table id= \"table\" class=\"table table-striped\" border='1'><thead><tr><th>Name</th><th>Mfg</th><th>Model</th><th>Serial Number</th></tr></thead><tbody>";
+while ($row = mysqli_fetch_array($result)) {
+    $EvapUnitID = $row['idtblEvapUnit'];
+    $EvapUnitName = $row['tblEvapUnitName'];
+    $EvapUnitManufacturer = $row['tblEvapUnitManufacturer'];
+    $EvapUnitModel = $row['tblEvapUnitModel'];
+    $EvapUnitSerial = $row['tblEvapUnitSerialNumber'];
+    $EvapUnitTable .= "<tr><td><a href='unitDetail.php?id=$custID'>$EvapUnitName</a></td><td>$EvapUnitManufacturer</td><td>$EvapUnitModel</td><td>$EvapUnitSerial</td></tr>";
+}
+$EvapUnitTable .= "</tbody></table></div>";
+
+
 ?>
-<script>
-    $(function () {
-        $('#table').DataTable({
-            "order": [[1, "Name"]]
-        });
-    });
-</script>
+    <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="text-center">
+                <div class="col-sm-12">
+                    <div class="fa fa-bank"> <?php echo $custName ?> </div>
+                </div>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#Condensers">Condensers</a></li>
+                <li><a data-toggle="tab" href="#HeatPumps">Heat Pumps</a></li>
+                <li><a data-toggle="tab" href="#GasFurnaces">Gas Furnaces</a></li>
+                <li><a data-toggle="tab" href="#AirHandlers">Air Handlers</a></li>
+                <li><a data-toggle="tab" href="#RooftopUnits">Rooftop Units</a></li>
+                <li><a data-toggle="tab" href="#EvapCoils">Evap Coils</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="Condensers" class="tab-pane fade in active">
+                    <p><?php echo $CondensersTable; ?></p>
+                </div>
+                <div id="HeatPumps" class="tab-pane fade">
+                    <p><?php echo $HeatPumpTable; ?></p>
+                </div>
+                <div id="GasFurnaces" class="tab-pane fade">
+                    <p><?php echo $GasFurnaceTable; ?></p>
+                </div>
+                <div id="AirHandlers" class="tab-pane fade">
+                    <p><?php echo $AirHandlerTable; ?></p>
+                </div>
+                <div id="RooftopUnits" class="tab-pane fade">
+                    <p><?php echo $RooftopTable; ?></p>
+                </div>
+                <div id="EvapCoils" class="tab-pane fade">
+                    <p><?php echo $EvapUnitTable; ?></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </body>
 
 
-
-</body>
+<?php include_once "./footer.php"; ?>
